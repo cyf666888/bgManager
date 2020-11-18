@@ -34,11 +34,13 @@
           prop="first_cateid"
           label="一级分类"
           :label-width="formLabelWidth"
+        
         >
           <el-select
             v-model="form.first_cateid"
             placeholder="请选择"
             @change="change(false)"
+              :disabled='!addInfo.isAdd '
           >
             <el-option
               v-for="item in cateList"
@@ -58,6 +60,7 @@
             v-model="form.second_cateid"
             placeholder="请选择"
             @change="changeTwo(false)"
+               :disabled='!addInfo.isAdd '
           >
             <el-option
               v-for="item in cateList2"
@@ -69,7 +72,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="商品" :label-width="formLabelWidth">
-          <el-select v-model="form.goodsid" placeholder="请选择">
+          <el-select v-model="form.goodsid" placeholder="请选择"    :disabled='!addInfo.isAdd '>
             <el-option
               v-for="item in goodsList"
               :key="item.id"
@@ -285,7 +288,11 @@ export default {
           .then(res=>{
             console.log(res);
             if(res.data.code==200){
+              this.$message.success(res.data.msg)
               this.getSeckList();
+              this.cancel();
+            } else {
+              this.$message.error(res.data.msg);
             }
           })
         }
