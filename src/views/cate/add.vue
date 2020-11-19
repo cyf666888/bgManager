@@ -203,6 +203,8 @@ export default {
     // 图片移出
     imgRemove(file, fileList) {
       // console.log(file, fileList);
+      this.fileList = [];
+      this.imgUrl = '';
     },
     //  图片预览
     imgPreview(file) {

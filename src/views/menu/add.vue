@@ -51,7 +51,7 @@
             <el-option
               v-for="item in indexRouter"
               :key="item.path"
-              :label="item.path"
+              :label="item.name"
               :value="item.path"
             >
             </el-option>
